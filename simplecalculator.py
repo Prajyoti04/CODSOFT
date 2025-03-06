@@ -8,7 +8,7 @@ def animate_result(result_text):
     for i in range(len(result_text) + 1):
         result_label.configure(text=result_text[:i])
         app.update()
-        time.sleep(0.05)  # Small delay for animation
+        time.sleep(0.05)  
 
 # Function to perform calculation
 def calculate():
@@ -41,13 +41,13 @@ def calculate():
     except ValueError:
         animate_result("Invalid input! Enter numbers.")
 
-# Initialize main application
+
 app = ctk.CTk()
 app.title("Animated Calculator")
 app.geometry("350x400")
 app.config(bg="#C3E4CD")  # Set pastel green background
 
-# UI Components
+
 ctk.CTkLabel(app, text="Simple Calculator", font=("Arial", 20, "bold"), text_color="#000000", bg_color="#C3E4CD").pack(pady=10)
 
 entry_num1 = ctk.CTkEntry(app, width=200)
