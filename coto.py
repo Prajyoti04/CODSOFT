@@ -7,14 +7,14 @@ import json  # For saving tasks
 app = customtkinter.CTk()
 app.title('To-Do List')
 app.geometry('350x500')
-app.config(bg='#09112e')
+app.config(bg='#000080')  # Navy Blue Background
 
-# Fonts
+
 font1 = ('Arial', 25, 'bold')
 font2 = ('Arial', 16, 'bold')
 font3 = ('Arial', 12)
 
-# Functions
+
 def add_task():
     task = task_entry.get().strip()
     if task:
@@ -37,7 +37,7 @@ def mark_completed():
         selected_task_index = tasks_list.curselection()[0]
         task_text = tasks_list.get(selected_task_index)
 
-        # Check if already marked
+        
         if task_text.startswith("[✓] "):
             messagebox.showinfo("Info", "Task is already completed!")
             return
@@ -63,35 +63,35 @@ def load_tasks():
             for task in tasks:
                 tasks_list.insert(END, task)
     except FileNotFoundError:
-        pass  # No tasks to load
+        pass  
 
-# UI Components
-title_label = customtkinter.CTkLabel(app, font=font1, text='To-Do List', text_color='#fff', bg_color='#09112e')
+
+title_label = customtkinter.CTkLabel(app, font=font1, text='To-Do List', text_color='#fff', bg_color='#000080')
 title_label.pack(pady=10)
 
 task_entry = customtkinter.CTkEntry(app, font=font2, text_color='#000', fg_color='#fff', border_color='#fff', width=260)
 task_entry.pack(pady=10)
 
-button_frame = Frame(app, bg='#09112e')
+button_frame = Frame(app, bg='#000080')
 button_frame.pack(pady=5)
 
 add_button = customtkinter.CTkButton(button_frame, font=font2, text_color='#fff', text='Add Task',
-                                     fg_color='#06911f', hover_color='#057518', bg_color='#09112e',
-                                     cursor='hand2', corner_radius=5, width=120, command=add_task)
+                                     fg_color='#1E90FF', hover_color='#1C86EE', bg_color='#000080',
+                                     cursor='hand2', corner_radius=5, width=120, command=add_task)  
 add_button.grid(row=0, column=0, padx=5, pady=5)
 
 remove_button = customtkinter.CTkButton(button_frame, font=font2, text_color='#fff', text='Remove Task',
-                                        fg_color='#96061c', hover_color='#7a0518', bg_color='#09112e',
-                                        cursor='hand2', corner_radius=5, width=120, command=remove_task)
+                                        fg_color='#FF4500', hover_color='#E63900', bg_color='#000080',
+                                        cursor='hand2', corner_radius=5, width=120, command=remove_task)  
 remove_button.grid(row=0, column=1, padx=5, pady=5)
 
 complete_button = customtkinter.CTkButton(app, font=font2, text_color='#fff', text='Mark Completed',
-                                          fg_color='#f0a500', hover_color='#d78c00', bg_color='#09112e',
-                                          cursor='hand2', corner_radius=5, width=260, command=mark_completed)
+                                          fg_color='#32CD32', hover_color='#2E8B57', bg_color='#000080',
+                                          cursor='hand2', corner_radius=5, width=260, command=mark_completed) 
 complete_button.pack(pady=5)
 
-# Scrollable Task List
-task_frame = Frame(app, bg='#09112e')
+
+task_frame = Frame(app, bg='#000080')
 task_frame.pack(pady=10)
 
 scrollbar = Scrollbar(task_frame)
@@ -102,7 +102,6 @@ tasks_list.pack(side=LEFT)
 
 scrollbar.config(command=tasks_list.yview)
 
-# Load saved tasks on startup
 load_tasks()
 
 app.mainloop()
