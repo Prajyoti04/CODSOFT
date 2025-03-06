@@ -18,7 +18,7 @@ def play_game(user_choice):
     )
     result_label.configure(text=f"Computer chose: {computer_choice}\n{result}")
 
-# UI Components
+
 title_label = ctk.CTkLabel(app, text="Rock Paper Scissors", font=("Comic Sans MS", 20, "bold"), text_color="#ff4081", bg_color="#fce4ec")
 title_label.pack(pady=10)
 
